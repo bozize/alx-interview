@@ -58,9 +58,9 @@ def isWinner(x, ani):
         temp = findPrimes(cluster)
 
         if temp % 2 == 0:
-            players['nona'] += 1
+            players['Ben'] += 1
         elif temp % 2 != 0:
-            players['abdi'] += 1
+            players['Maria'] += 1
 
     if players['Maria'] > players['Ben']:
         return 'Maria'
