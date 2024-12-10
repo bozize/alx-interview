@@ -46,7 +46,7 @@ def isWinner(x, ani):
     """
     Winner.
     """
-    players = {'abdi': 0, 'nona': 0}
+    players = {'Maria': 0, 'Ben': 0}
     cluster = set()
     for elem in range(x):
         nums.sort()
@@ -62,9 +62,9 @@ def isWinner(x, ani):
         elif temp % 2 != 0:
             players['abdi'] += 1
 
-    if players['abdi'] > players['nona']:
-        return 'abdi'
-    elif players['abdi'] < players['nona']:
-        return 'nona'
+    if players['Maria'] > players['Ben']:
+        return 'Maria'
+    elif players['Maria'] < players['Ben']:
+        return 'Ben'
     else:
         return None
