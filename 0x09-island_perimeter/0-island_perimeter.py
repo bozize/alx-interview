@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-"""Perimeter of an Island - ALX Technical Interview"""
+"""Ypologismos Perimetrou Nisiou se Pinaka - ALX Interview"""
 
-def elegxos_aksiotitas(x):
-    """Check if the value is 0 or 1.
+def elegxos_orio(x):
+    """Elegxei an ena kelio tou pinaka einai se orio i nero.
 
-    Args:
-        x (int): The value to check.
+    Parametroi:
+        x (int): H timi se ena kelio tou pinaka (0 i 1).
 
-    Returns:
-        int: Returns 1 if the value is 0, otherwise returns 0.
+    Epistrofi:
+        int: Epistrefei 1 an to kelio einai nero (0) i exei vgei apo ta oria, alliws epistrefei 0.
     """
     if x == 0:
         return 1
@@ -16,45 +16,44 @@ def elegxos_aksiotitas(x):
 
 
 def perimetros_nisiou(pinakas):
-    """Calculate the perimeter of an island in a grid.
+    """Ypologizei to perimetro enos nisiou sto pinaka.
 
-    Args:
-        pinakas (list of list of int): 2D grid representing the island where
-                                       1's represent land and 0's represent water.
+    O pinakas periexei 1 (xora) kai 0 (nero). H sinartisi ypologizei
+    to perimetro mesw tou ypologismou twn orion twn kelion xoras pou
+    einai konta sto nero i sta oria tou pinaka.
 
-    Returns:
-        int: The total perimeter of the island.
+    Parametroi:
+        pinakas (list of list of int): 2D pinakas pou antistixe me to nisi, 
+                                       opou to 1 antistixe to xora kai to 0 to nero.
+
+    Epistrofi:
+        int: To synoliko perimetro tou nisiou.
     """
+    
+    # Labbete ton arithmo twn grammon kai twn stilwn tou pinaka
+    grammes = len(pinakas)
+    stiles = len(pinakas[0])
 
-    arithmos_grammes = len(pinakas)
-    arithmos_stiles = len(pinakas[0])
-    assert 1 <= arithmos_grammes <= 100 and 1 <= arithmos_stiles <= 100, "The dimensions must be between 1 and 100"
+    # Elegxos mihanismou gia tis diastaseis tou pinaka
+    assert 1 <= grammes <= 100 and 1 <= stiles <= 100, "Oi diastaseis tou pinaka prepei na einai meta xoris 1 kai 100."
 
-    perimetros = 0
-    for i in range(arithmos_grammes):
-        for j in range(arithmos_stiles):
-            assert pinakas[i][j] == 0 or pinakas[i][j] == 1, "Grid values must be either 0 or 1"
-            
+    perimetro = 0
+    for i in range(grammes):
+        for j in range(stiles):
+            # Elegxos gia mono 0 kai 1 sto pinaka
+            assert pinakas[i][j] == 0 or pinakas[i][j] == 1, "Oi times tou pinaka prepei na einai mono 0 i 1."
+
+            # Monon ypologizoume perimetro gia kelia xoras (1)
             if pinakas[i][j] == 1:
-                if i - 1 < 0:
-                    perimetros += 1
-                else:
-                    perimetros += elegxos_aksiotitas(pinakas[i-1][j])
+                # Elegxos gia oria tou pinaka i nero konta sto kelio xoras
+                if i == 0 or pinakas[i-1][j] == 0:  # Elegxos panw
+                    perimetro += 1
+                if i == grammes - 1 or pinakas[i+1][j] == 0:  # Elegxos katw
+                    perimetro += 1
+                if j == 0 or pinakas[i][j-1] == 0:  # Elegxos aristera
+                    perimetro += 1
+                if j == stiles - 1 or pinakas[i][j+1] == 0:  # Elegxos deksia
+                    perimetro += 1
 
-                if j - 1 < 0:
-                    perimetros += 1
-                else:
-                    perimetros += elegxos_aksiotitas(pinakas[i][j-1])
-
-                try:
-                    perimetros += elegxos_aksiotitas(pinakas[i+1][j])
-                except IndexError:
-                    perimetros += 1
-
-                try:
-                    perimetros += elegxos_aksiotitas(pinakas[i][j+1])
-                except IndexError:
-                    perimetros += 1
-
-    return perimetros
+    return perimetro
 
