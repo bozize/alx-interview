@@ -1,15 +1,24 @@
 #!/usr/bin/python3
 """
-Module for calculating the perimeter of an island described in a grid.
-"""
+Module to calculate the perimeter of an island described in a grid.
 
+Each cell of the grid represents either land (1) or water (0).
+The function calculates the perimeter of the island formed by land cells.
+
+The perimeter is defined as the number of edges of land cells that are adjacent to water cells or the boundary of the grid.
+
+Parameters:
+    grid (list of list of int): A 2D grid where 1 represents land and 0 represents water.
+
+Returns:
+    int: The perimeter of the island.
+"""
 def perimetros_nisou(diktio):
     """
-    Calculate the perimeter of the island described in a grid.
+    Calculate the perimeter of an island described in a grid.
 
     Parameters:
-        diktio: list of list of int
-            A 2D grid where 1 represents land and 0 represents water.
+        diktio (list of list of int): A grid where 1 represents land and 0 represents water.
 
     Returns:
         int: The perimeter of the island.
