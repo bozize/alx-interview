@@ -8,10 +8,7 @@ def findMultiples(ani, ana):
     """
     Finds
     """
-    for i in ana:
-        if i % ani == 0:
-            ana.remove(i)
-    return ana
+    return [i for i in ana if i % ani != 0]
 
 
 def isPrime(i):
@@ -31,7 +28,7 @@ def findPrimes(n):
     Find.
     """
     counter = 0
-    ana = list(n)
+    ana = list(range(1, n + 1))
     for i in range(1, len(ana) + 1):
         if isPrime(i):
             counter += 1
