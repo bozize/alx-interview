@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 """
-Prime Game top
+Prime Game ben maria
 """
 
 
-def findMultiples(ani, ana):
+def findMultiples(num, targets):
     """
-    Finds
+    Multiple find.
     """
-    return [i for i in ana if i % ani != 0]
+    for i in targets:
+        if i % num == 0:
+            targets.remove(i)
+    return targets
 
 
 def isPrime(i):
@@ -28,18 +31,18 @@ def findPrimes(n):
     Find.
     """
     counter = 0
-    ana = list(range(1, n + 1))
-    for i in range(1, len(ana) + 1):
+    target = list(n)
+    for i in range(1, len(target) + 1):
         if isPrime(i):
             counter += 1
-            ana.remove(i)
-            ana = findMultiples(i, ana)
+            target.remove(i)
+            target = findMultiples(i, target)
         else:
             pass
     return counter
 
 
-def isWinner(x, ani):
+def isWinner(x, nums):
     """
     Winner.
     """
@@ -47,10 +50,10 @@ def isWinner(x, ani):
     cluster = set()
     for elem in range(x):
         nums.sort()
-        ani = nums[elem]
-        for i in range(1, ani + 1):
+        num = nums[elem]
+        for i in range(1, num + 1):
             cluster.add(i)
-            if i == ani + 1:
+            if i == num + 1:
                 break
         temp = findPrimes(cluster)
 
